@@ -20,7 +20,8 @@ X = vec.fit_transform(essays)
 count_vec_df = pd.DataFrame(X.todense(), columns=vec.get_feature_names())
 
 totals = count_vec_df.sum(axis=0)
-totals = totals[totals >= 10]
+totals = totals[totals >= 30]
+print(totals.shape)
 
 count_vec_df = count_vec_df[totals.index.tolist()]
 count_vec_df[indices] = df

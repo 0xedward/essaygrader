@@ -1,34 +1,35 @@
+<% provide(:title, "Essay Grader") %>
 <% if !flash[:notice].blank? %>
    <div class = "alert alert-info">
       <%= flash[:notice] %>
    </div>
 <% end %>
 
+<!-- NAV BAR -->
 <br />
-
-<%= link_to "New File", new_document_path, class: "btn btn-primary" %>
-<br />
-<br />
-
-<table class = "table table-bordered table-striped">
-   <thead>.
-      <tr>
-         <th>Name</th>
-         <th>Download</th>
-         <th> </th>
-      </tr>
-   </thead>
-   
-   <tbody>
-      <% @document.each do |d| %>
-         
-         <tr>
-            <td><%= d.name %></td>
-            <td><%= link_to "Download", d.attachment_url %></td>
-            <td><%= button_to "Delete",  d, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{d.name}?" %></td>
-         </tr>
-         
-      <% end %>
-   </tbody>
-   
-</table>
+<div class="fluid-container" id="document-container">
+<%= link_to "Upload", new_document_path, class: "btn btn-primary" %>
+<br /><br />
+    <table class = "table table-bordered table-striped">
+       <thead>
+          <tr>
+             <th>Name</th>
+             <th>Download</th>
+             <th> </th>
+          </tr>
+       </thead>
+       
+       <tbody>
+          <% @document.each do |d| %>
+             
+             <tr>
+                <td><%= d.name %></td>
+                <td><%= link_to "Download", d.attachment_url %></td>
+                <td><%= button_to "Delete",  d, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{d.name}?" %></td>
+             </tr>
+             
+          <% end %>
+       </tbody>
+       
+    </table>
+</div>
